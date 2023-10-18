@@ -38,27 +38,29 @@
 //         inOrderTraversal(root.right, list);
 //     }
 // }
-class Solution 
-{
-  public int minDiffInBST(TreeNode root) 
-  {
-    inorder(root);
-    return ans;
-  }
-
-  private int ans = Integer.MAX_VALUE;
-  private Integer pred = null;
-
-  private void inorder(TreeNode node) 
-  {
-    if (node == null)
-      return;
-
-    inorder(node.left);
-    if (pred != null) {
-      ans = Math.min(ans, node.val - pred);
+class Solution {
+    
+  
+    private int ans = Integer.MAX_VALUE;
+    private Integer pred = null;  
+    
+    public int minDiffInBST(TreeNode root) {
+        inorder(root);
+        return ans;
     }
-    pred = node.val;
-    inorder(node.right);
-  }
+
+    private void inorder(TreeNode node) {
+        if (node == null) {
+            return;
+        }
+        
+        inorder(node.left);
+        if (pred != null) {
+            ans = Math.min(ans, node.val - pred);
+        }
+      
+        pred = node.val;
+        inorder(node.right);
+    }
+    
 }

@@ -13,18 +13,39 @@
  *     }
  * }
  */
+// class Solution {
+//     public boolean isSymmetric(TreeNode root) {
+//         return root==null || isSymmetricHelp(root.left, root.right);
+//     }
+
+//     private boolean isSymmetricHelp(TreeNode left, TreeNode right){
+//         if(left==null || right==null)
+//             return left==right;
+        
+//         if(left.val!=right.val)
+//             return false;
+        
+//         return isSymmetricHelp(left.left, right.right) && isSymmetricHelp(left.right, right.left);
+//     }
+    
+// }
 class Solution {
     public boolean isSymmetric(TreeNode root) {
-        return root==null || isSymmetricHelp(root.left, root.right);
+        if (root == null) {
+            return true;
+        }
+        
+        return isSymmetricHelper(root.left, root.right);
     }
-
-    private boolean isSymmetricHelp(TreeNode left, TreeNode right){
-        if(left==null || right==null)
-            return left==right;
-        
-        if(left.val!=right.val)
+    
+    public boolean isSymmetricHelper(TreeNode p, TreeNode q) {
+        if (p == null || q == null) {
+            return p == q;
+        }
+        if (p.val != q.val) {
             return false;
+        }
         
-        return isSymmetricHelp(left.left, right.right) && isSymmetricHelp(left.right, right.left);
+        return isSymmetricHelper(p.left, q.right) && isSymmetricHelper(p.right, q.left);
     }
 }

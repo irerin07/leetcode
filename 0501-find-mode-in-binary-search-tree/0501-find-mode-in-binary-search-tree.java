@@ -32,7 +32,7 @@ class Solution {
             }
             
             if (currStreak > maxStreak) {
-                ans = new ArrayList();
+                ans.clear();
                 maxStreak = currStreak;
             }
             

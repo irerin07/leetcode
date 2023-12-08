@@ -21,22 +21,35 @@ public class Solution {
             return result;   
         }
         
-        Stack<TreeNode> stack = new Stack<TreeNode>();
-        stack.push(root);
+//         Stack<TreeNode> stack = new Stack<TreeNode>();
+//         stack.push(root);
         
-        while (!stack.isEmpty()){
-            TreeNode node = stack.pop();
-            result.add(node.val);
+//         while (!stack.isEmpty()){
+//             TreeNode node = stack.pop();
+//             result.add(node.val);
             
-            if (node.right != null){ 
-                stack.push(node.right);
-            }
+//             if (node.right != null){ 
+//                 stack.push(node.right);
+//             }
             
-            if (node.left != null){ 
-                stack.push(node.left);
-            }
-        }
+//             if (node.left != null){ 
+//                 stack.push(node.left);
+//             }
+//         }
+        
+        helper(root, result);
         
         return result;
+    }
+    
+    public void helper(TreeNode node, List<Integer> result) {
+        result.add(node.val);
+        
+        if (node.left != null) {
+            helper(node.left, result);
+        }
+        if (node.right != null) {
+            helper(node.right, result);
+        }
     }
 }

@@ -21,6 +21,7 @@ class Solution {
                 last.next = l1;
                 l1 = l1.next;
             }
+            
             last = last.next;
         }
     

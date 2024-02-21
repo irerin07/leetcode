@@ -6,9 +6,7 @@ class Solution {
         ints[0] = 0;
 
         for (int i = 1; i < ints.length; i++) {
-            int i1 = gain[i - 1];
-            int anInt = ints[i-1];
-            ints[i] = i1 + anInt;
+            ints[i] = gain[i - 1] + ints[i-1];
             if (answer < ints[i]) {
                 answer = ints[i];
             }

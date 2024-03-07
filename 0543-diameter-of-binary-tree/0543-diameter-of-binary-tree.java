@@ -14,33 +14,22 @@
  * }
  */
 class Solution {
+    int ans=0;
     public int diameterOfBinaryTree(TreeNode root) {
-
-        // Create an array to hold the diameter of the tree
-        int diameter[] = new int[1];
-
-        // Recursively calculate the height of the tree and update the diameter array
-        height(root,diameter);
-
-        // Return the diameter of the tree
-      return diameter[0];
+        if(root==null )return 0;
+        height(root);
+        return ans;
     }
-
-    public int height(TreeNode root, int diameter[]){
+    
+    public int height(TreeNode root){
+        //if root==null height==0
+        if(root==null)return -1;
         
-        // Base case: if the root is null, the height is 0
-        if(root == null){
-            return 0;
-        }
-
-        // Recursively calculate the height of the left and right subtrees
-        int left = height(root.left,diameter);
-        int right = height(root.right,diameter);
-
-        // Update the diameter array by taking the maximum diameter that passes through the current node
-        diameter[0] = Math.max(diameter[0],left + right);
-
-        // Return the maximum depth of the current node by adding 1 to the maximum depth of its deepest subtree
-        return Math.max(left,right)+1;
+        int L=height(root.left);
+        int R=height(root.right);
+        //ans signfies(no. of nodes farthest apart) or the DIAMETER
+        ans=Math.max(ans,L+R+2);
+        //height of the tree is max of LST & RST +1
+        return 1+Math.max(L,R);
     }
 }

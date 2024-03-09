@@ -10,13 +10,17 @@
  */
 class Solution {
     public ListNode middleNode(ListNode head) {
-        ListNode slow = head;
-        ListNode fast = head;
-        while (fast != null && fast.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
+        List<ListNode> list = new ArrayList<>();
+        
+        int counter = 0;
+        
+        while (head != null) {
+            list.add(head);
+            counter += 1;
+            head = head.next;
         }
         
-        return slow;
+        
+        return list.get(counter/2);       
     }
 }
